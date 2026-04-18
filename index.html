@@ -3,445 +3,617 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inputora — Hero Section</title>
+  <title>Inputora | Automatiza tus redes sociales</title>
+  <meta name="description" content="Automatiza la creación y publicación de contenido para redes sociales con IA. Ahorra tiempo, publica con constancia y empieza gratis con Inputora." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dk6lytcvx/image/upload/v1776528743/Logo_Transparent_h6tnv3.png" />
+  <link rel="apple-touch-icon" href="https://res.cloudinary.com/dk6lytcvx/image/upload/v1776528743/Logo_Transparent_h6tnv3.png" />
+
   <style>
     :root{
-      --bg:#070b14;
-      --bg-2:#0d1322;
+      --bg:#090b14;
+      --bg-2:#101424;
+      --bg-3:#12182b;
+      --card:rgba(255,255,255,0.06);
+      --card-strong:rgba(255,255,255,0.08);
+      --border:rgba(255,255,255,0.12);
       --text:#ffffff;
-      --muted:#b7bdd3;
-      --primary:#6C5CE7;
-      --accent:#00D1FF;
-      --shadow:0 30px 80px rgba(0,0,0,.45);
-      --max:1200px;
+      --muted:#b7c0d9;
+      --muted-2:#8d96b3;
+      --primary:#7c5cff;
+      --primary-2:#9c7dff;
+      --accent:#00d1ff;
+      --success:#71f0b1;
+      --shadow:0 24px 80px rgba(0,0,0,.45);
+      --shadow-soft:0 12px 40px rgba(0,0,0,.30);
+      --radius:24px;
+      --radius-sm:16px;
+      --max:1180px;
     }
 
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
-      font-family:Arial,sans-serif;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(108,92,231,.22), transparent 26%),
-        radial-gradient(circle at 85% 15%, rgba(0,209,255,.16), transparent 24%),
-        linear-gradient(180deg, var(--bg), var(--bg-2));
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color:var(--text);
-    }
-
-    .inputora-hero{
-      position:relative;
-      overflow:hidden;
-      padding:28px 18px 42px;
       background:
-        radial-gradient(circle at 20% 0%, rgba(108,92,231,.10), transparent 30%),
-        radial-gradient(circle at 100% 10%, rgba(0,209,255,.10), transparent 24%);
+        radial-gradient(circle at top left, rgba(124,92,255,.22), transparent 32%),
+        radial-gradient(circle at 85% 12%, rgba(0,209,255,.14), transparent 25%),
+        linear-gradient(180deg, #090b14 0%, #0d1120 35%, #0a0d18 100%);
+      line-height:1.5;
+      overflow-x:hidden;
     }
 
-    .inputora-hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size:24px 24px;
-      mask-image:linear-gradient(to bottom, rgba(0,0,0,.35), transparent 70%);
-      pointer-events:none;
+    img{
+      max-width:100%;
+      display:block;
     }
 
-    .hero-inner{
-      position:relative;
-      z-index:2;
-      width:min(var(--max), 100%);
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:min(100% - 32px, var(--max));
       margin:0 auto;
     }
 
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(14px);
+      background:rgba(9,11,20,.72);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
     .nav{
+      min-height:78px;
       display:flex;
+      align-items:center;
       justify-content:space-between;
-      align-items:center;
-      gap:14px;
-      margin-bottom:24px;
+      gap:18px;
     }
 
-    .logo{
+    .brand{
       display:flex;
       align-items:center;
-      gap:14px;
-      text-decoration:none;
-      color:#fff;
-      font-weight:800;
-      font-size:1.05rem;
+      gap:12px;
+      min-width:0;
     }
 
-    .logo-mark{
-      width:56px;
-      height:56px;
-      object-fit:cover;
-      display:block;
-      background:#fff;
+    .brand-badge{
+      width:44px;
+      height:44px;
       border-radius:14px;
-      padding:6px;
-      box-shadow:
-        0 10px 26px rgba(0,0,0,.26),
-        inset 0 0 0 1px rgba(255,255,255,.75);
+      background:rgba(255,255,255,.98);
+      padding:7px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .brand-badge img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      gap:1px;
+    }
+
+    .brand-name{
+      font-size:1rem;
+      font-weight:700;
+      letter-spacing:.01em;
+    }
+
+    .brand-sub{
+      font-size:.82rem;
+      color:var(--muted-2);
     }
 
     .nav-cta{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:46px;
-      padding:0 18px;
+      padding:12px 18px;
       border-radius:999px;
-      text-decoration:none;
+      background:linear-gradient(135deg, var(--primary), var(--accent));
       color:#fff;
       font-weight:700;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.14);
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      transition:transform .18s ease, background .18s ease, border-color .18s ease;
+      font-size:.95rem;
+      box-shadow:0 14px 32px rgba(62, 86, 255, .28);
+      white-space:nowrap;
+      transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
     }
 
-    .nav-cta:hover{
-      transform:translateY(-2px);
-      background:rgba(255,255,255,.12);
-      border-color:rgba(255,255,255,.22);
+    .nav-cta:hover,
+    .btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 18px 38px rgba(62, 86, 255, .34);
+    }
+
+    .hero{
+      padding:54px 0 28px;
     }
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.02fr .98fr;
+      grid-template-columns: 1.08fr .92fr;
       gap:34px;
-      align-items:start;
+      align-items:center;
     }
 
-    .hero-copy{
-      padding-top:56px;
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 14px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      color:#dbe4ff;
+      font-size:.92rem;
+      margin-bottom:18px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .pill-dot{
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      background:var(--success);
+      box-shadow:0 0 14px var(--success);
+      flex-shrink:0;
     }
 
     h1{
       margin:0 0 16px;
-      font-size:clamp(2.5rem, 6vw, 5.4rem);
-      line-height:.95;
+      font-size:clamp(2.2rem, 5.6vw, 4.3rem);
+      line-height:1.03;
       letter-spacing:-.04em;
-      font-weight:900;
-      max-width:9ch;
+      max-width:12ch;
     }
 
-    .gradient-text{
-      background:linear-gradient(135deg, #b9b2ff 0%, #9de8ff 100%);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-
-    .subheadline{
-      margin:0 0 24px;
+    .hero p.lead{
+      margin:0;
       max-width:620px;
+      font-size:clamp(1rem, 1.7vw, 1.18rem);
       color:var(--muted);
-      font-size:1.18rem;
-      line-height:1.65;
     }
 
     .cta-row{
       display:flex;
       flex-wrap:wrap;
       gap:14px;
-      margin-bottom:18px;
+      margin-top:28px;
     }
 
-    .btn-primary,
-    .btn-secondary{
+    .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       min-height:54px;
-      padding:0 22px;
-      border-radius:16px;
-      text-decoration:none;
-      font-weight:800;
-      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease, background .18s ease;
+      padding:14px 22px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:1rem;
+      transition:transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
     }
 
     .btn-primary{
-      color:#fff;
       background:linear-gradient(135deg, var(--primary), var(--accent));
-      box-shadow:0 18px 40px rgba(76,88,255,.28);
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-2px);
-      box-shadow:0 22px 46px rgba(76,88,255,.34);
+      color:#fff;
+      box-shadow:0 16px 34px rgba(83, 110, 255, .28);
     }
 
     .btn-secondary{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
       color:#fff;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.14);
     }
 
-    .btn-secondary:hover{
-      transform:translateY(-2px);
-      background:rgba(255,255,255,.1);
-    }
-
-    .proof{
+    .micro-trust{
       display:flex;
       flex-wrap:wrap;
       gap:12px 18px;
-      color:#d4dbef;
-      font-size:.98rem;
-      font-weight:600;
-    }
-
-    .proof span{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      opacity:.95;
-    }
-
-    .proof span::before{
-      content:"✓";
-      color:#83f0bf;
-      font-weight:900;
-    }
-
-    .dashboard{
-      position:relative;
-      padding:18px;
-      border-radius:32px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
-      overflow:hidden;
-    }
-
-    .dashboard::after{
-      content:"";
-      position:absolute;
-      inset:auto -10% -24% auto;
-      width:240px;
-      height:240px;
-      background:radial-gradient(circle, rgba(0,209,255,.18), transparent 60%);
-      pointer-events:none;
-    }
-
-    .dash-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:18px;
-      padding:4px 2px 2px;
-    }
-
-    .traffic{
-      display:flex;
-      gap:8px;
-    }
-
-    .traffic i{
-      width:11px;
-      height:11px;
-      border-radius:50%;
-      display:block;
-    }
-
-    .traffic i:nth-child(1){background:#ff5f57}
-    .traffic i:nth-child(2){background:#febc2e}
-    .traffic i:nth-child(3){background:#28c840}
-
-    .status{
-      padding:10px 14px;
-      border-radius:999px;
-      color:#dff8ff;
-      background:rgba(0,209,255,.12);
-      border:1px solid rgba(0,209,255,.24);
-      font-weight:700;
-    }
-
-    .post-card,
-    .workflow{
-      position:relative;
-      border-radius:26px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.1);
-      overflow:hidden;
-    }
-
-    .post-card{
-      padding:18px;
-      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.07));
-    }
-
-    .post-head{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:14px;
-    }
-
-    .avatar{
-      width:42px;
-      height:42px;
-      border-radius:50%;
-      background:#ffffff;
-      padding:4px;
-      flex:0 0 auto;
-      box-shadow:inset 0 0 0 1px rgba(255,255,255,.7);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .avatar img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      border-radius:50%;
-      display:block;
-    }
-
-    .post-title{
-      font-size:1.03rem;
-      font-weight:800;
-      color:#fff;
-      margin:0;
-    }
-
-    .post-handle{
-      margin:2px 0 0;
-      color:#aeb8d1;
+      margin-top:18px;
+      color:#d6ddf6;
       font-size:.95rem;
     }
 
-    .post-img{
-      width:100%;
-      border-radius:20px;
-      overflow:hidden;
-      background:#e9edf7;
-      margin-bottom:14px;
-      border:1px solid rgba(255,255,255,.14);
+    .micro-trust span{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      white-space:nowrap;
     }
 
-    .post-img img{
-      display:block;
-      width:100%;
-      height:auto;
-      object-fit:cover;
+    .micro-trust strong{
+      color:#fff;
+      font-weight:600;
+    }
+
+    .proof-list{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+      margin-top:28px;
+    }
+
+    .proof-item{
+      padding:16px 16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:#d6def8;
+      font-size:.95rem;
+    }
+
+    .hero-card{
+      position:relative;
+      border-radius:30px;
+      padding:22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:auto -20% -35% auto;
+      width:240px;
+      height:240px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(124,92,255,.28), transparent 65%);
+      pointer-events:none;
+    }
+
+    .status-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:18px;
+      padding:12px 14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .status-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+
+    .status-text{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width:0;
+    }
+
+    .status-title{
+      font-size:.95rem;
+      font-weight:700;
+    }
+
+    .status-sub{
+      font-size:.84rem;
+      color:var(--muted-2);
+    }
+
+    .image-shell{
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+      margin-bottom:18px;
     }
 
     .workflow{
-      margin-top:14px;
-      padding:16px;
-      background:rgba(255,255,255,.06);
-    }
-
-    .workflow h3{
-      margin:0 0 12px;
-      font-size:1rem;
-      color:#fff;
-    }
-
-    .workflow-grid{
       display:grid;
-      grid-template-columns:repeat(2, 1fr);
-      gap:10px;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
     }
 
     .step{
-      padding:12px;
-      border-radius:16px;
-      background:rgba(255,255,255,.06);
+      padding:14px;
+      border-radius:18px;
+      background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.08);
-      color:#d9e2f6;
-      font-size:.93rem;
-      line-height:1.45;
+      min-height:110px;
     }
 
-    .step strong{
-      display:block;
-      color:#fff;
-      margin-bottom:4px;
-    }
-
-    .bottom-tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:18px;
-    }
-
-    .tag{
-      padding:10px 14px;
+    .step-number{
+      width:28px;
+      height:28px;
       border-radius:999px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      color:#dbe4f6;
-      font-weight:700;
-      font-size:.92rem;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.82rem;
+      font-weight:800;
+      background:linear-gradient(135deg, var(--primary), var(--accent));
+      margin-bottom:10px;
     }
 
-    @media (max-width: 980px){
-      .hero-grid{
+    .step h3{
+      margin:0 0 6px;
+      font-size:.98rem;
+    }
+
+    .step p{
+      margin:0;
+      color:var(--muted);
+      font-size:.89rem;
+      line-height:1.4;
+    }
+
+    section{
+      padding:34px 0;
+    }
+
+    .section-title-wrap{
+      max-width:760px;
+      margin:0 auto 22px;
+      text-align:center;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:10px;
+      color:#cbd7ff;
+      font-size:.88rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.7rem, 3vw, 2.7rem);
+      line-height:1.08;
+      letter-spacing:-.03em;
+    }
+
+    .section-sub{
+      margin:0 auto;
+      color:var(--muted);
+      font-size:1.02rem;
+      max-width:700px;
+    }
+
+    .benefits-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+      margin-top:24px;
+    }
+
+    .benefit-card,
+    .trust-card,
+    .cta-box{
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.035));
+      border:1px solid rgba(255,255,255,.09);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .benefit-card{
+      padding:22px;
+    }
+
+    .benefit-icon{
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.15rem;
+      background:rgba(124,92,255,.16);
+      border:1px solid rgba(124,92,255,.28);
+      margin-bottom:14px;
+    }
+
+    .benefit-card h3{
+      margin:0 0 8px;
+      font-size:1.14rem;
+    }
+
+    .benefit-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.98rem;
+    }
+
+    .trust-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      margin-top:24px;
+    }
+
+    .trust-card{
+      padding:24px;
+    }
+
+    .trust-card h3{
+      margin:0 0 16px;
+      font-size:1.18rem;
+    }
+
+    .business-list{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:12px;
+    }
+
+    .business-item{
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:#eef2ff;
+      font-size:.97rem;
+      font-weight:600;
+    }
+
+    .stat-boxes{
+      display:grid;
+      gap:14px;
+    }
+
+    .stat{
+      padding:18px;
+      border-radius:18px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .stat strong{
+      display:block;
+      font-size:1.5rem;
+      margin-bottom:6px;
+      letter-spacing:-.03em;
+    }
+
+    .stat span{
+      color:var(--muted);
+      font-size:.96rem;
+    }
+
+    .cta-section{
+      padding:28px 0 64px;
+    }
+
+    .cta-box{
+      padding:28px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .cta-box::after{
+      content:"";
+      position:absolute;
+      width:280px;
+      height:280px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(0,209,255,.14), transparent 68%);
+      right:-90px;
+      top:-120px;
+      pointer-events:none;
+    }
+
+    .cta-box h2{
+      max-width:780px;
+      margin:0 auto 12px;
+    }
+
+    .cta-box p{
+      max-width:700px;
+      margin:0 auto;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .cta-box .cta-row{
+      justify-content:center;
+    }
+
+    .footer{
+      padding:20px 0 36px;
+      color:var(--muted-2);
+      font-size:.92rem;
+      text-align:center;
+    }
+
+    @media (max-width: 1024px){
+      .hero-grid,
+      .trust-grid{
         grid-template-columns:1fr;
       }
 
-      .hero-copy{
-        padding-top:0;
+      .hero{
+        padding-top:36px;
       }
 
       h1{
-        max-width:11ch;
+        max-width:14ch;
+      }
+
+      .proof-list,
+      .benefits-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .workflow{
+        grid-template-columns:1fr 1fr;
       }
     }
 
-    @media (max-width: 640px){
-      .inputora-hero{
-        padding:14px 10px 24px;
+    @media (max-width: 720px){
+      .container{
+        width:min(100% - 22px, var(--max));
       }
 
       .nav{
-        margin-bottom:14px;
+        min-height:72px;
       }
 
-      .logo{
-        gap:10px;
-        font-size:1rem;
+      .brand-badge{
+        width:40px;
+        height:40px;
+        border-radius:12px;
+        padding:6px;
       }
 
-      .logo-mark{
-        width:52px;
-        height:52px;
-        border-radius:14px;
-        padding:5px;
+      .brand-sub{
+        display:none;
       }
 
       .nav-cta{
-        min-height:42px;
-        padding:0 14px;
-        font-size:.94rem;
+        padding:11px 14px;
+        font-size:.9rem;
       }
 
-      .hero-copy{
-        padding-top:0;
+      .hero{
+        padding:24px 0 20px;
+      }
+
+      .pill{
+        margin-bottom:14px;
+        font-size:.86rem;
       }
 
       h1{
-        font-size:clamp(2.3rem, 13vw, 4.4rem);
-        line-height:.96;
-        max-width:8ch;
+        font-size:clamp(2rem, 10vw, 2.8rem);
+        max-width:100%;
       }
 
-      .subheadline{
+      .hero p.lead{
         font-size:1rem;
-        line-height:1.55;
-        margin-bottom:20px;
       }
 
       .cta-row{
@@ -449,141 +621,244 @@
         align-items:stretch;
       }
 
-      .btn-primary,
-      .btn-secondary{
+      .btn{
         width:100%;
-        min-height:52px;
       }
 
-      .proof{
-        flex-direction:column;
-        gap:10px;
-        align-items:flex-start;
-      }
-
-      .dashboard{
-        padding:14px;
-        border-radius:24px;
-      }
-
-      .post-card,
+      .proof-list,
+      .benefits-grid,
+      .business-list,
       .workflow{
-        border-radius:20px;
+        grid-template-columns:1fr;
       }
 
-      .workflow-grid{
-        grid-template-columns:1fr 1fr;
+      .micro-trust{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
       }
 
-      .bottom-tags{
-        gap:8px;
+      .hero-card,
+      .benefit-card,
+      .trust-card,
+      .cta-box{
+        border-radius:22px;
       }
 
-      .tag{
-        font-size:.86rem;
+      .step{
+        min-height:auto;
+      }
+
+      section{
+        padding:28px 0;
+      }
+
+      .cta-section{
+        padding-bottom:52px;
       }
     }
   </style>
 </head>
 <body>
-  <section class="inputora-hero">
-    <div class="hero-inner">
 
-      <div class="nav">
-        <a class="logo" href="#">
-          <img class="logo-mark" src="https://res.cloudinary.com/dk6lytcvx/image/upload/v1776376365/Icon_arnl49.png" alt="Inputora logo">
-          <span>Inputora</span>
-        </a>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="Inputora">
+        <div class="brand-badge">
+          <img src="https://res.cloudinary.com/dk6lytcvx/image/upload/v1776528743/Logo_Transparent_h6tnv3.png" alt="Logo Inputora" />
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Inputora</span>
+          <span class="brand-sub">Automatización de contenido con IA</span>
+        </div>
+      </a>
 
-        <a class="nav-cta" href="probar-gratis.html">
-          Probar gratis
-        </a>
-      </div>
+      <a class="nav-cta" href="probar-gratis.html">Empieza gratis</a>
+    </div>
+  </header>
 
-      <div class="hero-grid">
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
         <div class="hero-copy">
-          <h1>
-            Automatiza tus redes sociales en
-            <span class="gradient-text">minutos</span>
-          </h1>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            Automatización sencilla para negocios reales
+          </div>
 
-          <p class="subheadline">
-            Crea, aprueba y publica contenido automáticamente con IA.
-            Una experiencia simple para negocios reales: menos tiempo creando posts,
-            más tiempo haciendo crecer tu marca.
+          <h1>Automatiza tus redes sociales y ahorra horas cada semana</h1>
+
+          <p class="lead">
+            Crea, aprueba y publica contenido automáticamente con IA. Menos tiempo pensando qué subir, más tiempo para atender tu negocio y conseguir clientes.
           </p>
 
           <div class="cta-row">
-            <a class="btn-primary" href="probar-gratis.html">
-              Prueba gratis 14 días
-            </a>
-            <a class="btn-secondary" href="probar-gratis.html">
-              Probar gratis
-            </a>
+            <a class="btn btn-primary" href="probar-gratis.html">Empieza gratis en 2 minutos</a>
+            <a class="btn btn-secondary" href="probar-gratis.html">Solicitar acceso ahora</a>
           </div>
 
-          <div class="proof">
-            <span>Sin conocimientos técnicos</span>
-            <span>Configuración sencilla</span>
-            <span>Ideal para móvil y QR</span>
+          <div class="micro-trust" aria-label="Elementos de confianza">
+            <span>✔ <strong>Sin tarjeta</strong></span>
+            <span>✔ <strong>Configuración guiada</strong></span>
+            <span>✔ <strong>Respuesta en menos de 24h</strong></span>
+          </div>
+
+          <div class="proof-list">
+            <div class="proof-item">✓ Sin conocimientos técnicos</div>
+            <div class="proof-item">✓ Ideal para móvil y QR</div>
+            <div class="proof-item">✓ Pensado para pequeños negocios</div>
           </div>
         </div>
 
-        <div class="dashboard">
-          <div class="dash-top">
-            <div class="traffic">
-              <i></i><i></i><i></i>
-            </div>
-            <div class="status">Sistema activo</div>
-          </div>
-
-          <div class="post-card">
-            <div class="post-head">
-              <div class="avatar">
-                <img src="https://res.cloudinary.com/dk6lytcvx/image/upload/v1776376365/Icon_arnl49.png" alt="Inputora logo">
-              </div>
-              <div>
-                <p class="post-title">Así funciona Inputora</p>
-                <p class="post-handle">@inputora.ai</p>
-              </div>
-            </div>
-
-            <div class="post-img">
-              <img src="https://res.cloudinary.com/dk6lytcvx/image/upload/v1776508573/2_uovoyl.png" alt="Automatización Inputora">
-            </div>
-
-            <div class="workflow">
-              <h3>Cómo funciona la automatización</h3>
-              <div class="workflow-grid">
-                <div class="step">
-                  <strong>1. Idea</strong>
-                  Escribes el tema
-                </div>
-                <div class="step">
-                  <strong>2. IA crea</strong>
-                  Texto e imagen
-                </div>
-                <div class="step">
-                  <strong>3. Apruebas</strong>
-                  Revisas fácil
-                </div>
-                <div class="step">
-                  <strong>4. Publica</strong>
-                  Sale automático
-                </div>
+        <div class="hero-card">
+          <div class="status-row">
+            <div class="status-left">
+              <span class="pill-dot"></span>
+              <div class="status-text">
+                <span class="status-title">Sistema activo</span>
+                <span class="status-sub">Contenido automatizado, revisión simple y publicación lista</span>
               </div>
             </div>
           </div>
 
-          <div class="bottom-tags">
-            <div class="tag">Publicación automática</div>
-            <div class="tag">Aprobación rápida</div>
-            <div class="tag">Contenido con IA</div>
+          <div class="image-shell">
+            <img
+              src="https://res.cloudinary.com/dk6lytcvx/image/upload/v1776442744/ChatGPT_Image_Apr_17_2026_02_16_22_AM_odj8na.png"
+              alt="Así funciona Inputora"
+            />
+          </div>
+
+          <div class="workflow">
+            <div class="step">
+              <div class="step-number">1</div>
+              <h3>Creas</h3>
+              <p>Nos cuentas tu negocio y el tipo de contenido que necesitas.</p>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <h3>La IA prepara</h3>
+              <p>Inputora genera ideas, textos y piezas listas para revisar.</p>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <h3>Apruebas</h3>
+              <p>Revisas de forma simple desde tu móvil, sin complicaciones.</p>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <h3>Publicamos</h3>
+              <p>Tu contenido sale con constancia sin perder tiempo cada día.</p>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
+    <section id="beneficios">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="eyebrow">Beneficios</span>
+          <h2>Menos trabajo manual. Más constancia. Más oportunidades de venta.</h2>
+          <p class="section-sub">
+            Inputora no solo automatiza tareas. Te ayuda a mantener tus redes activas sin que tengas que dedicar horas cada semana.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <article class="benefit-card">
+            <div class="benefit-icon">⏱️</div>
+            <h3>Ahorra tiempo real</h3>
+            <p>Deja de pensar cada día qué publicar. Organiza semanas de contenido en minutos y dedica ese tiempo a tu negocio.</p>
+          </article>
+
+          <article class="benefit-card">
+            <div class="benefit-icon">📲</div>
+            <h3>Publica con constancia</h3>
+            <p>Mantén una presencia activa sin depender de inspiración, recordatorios o estar pendiente del móvil constantemente.</p>
+          </article>
+
+          <article class="benefit-card">
+            <div class="benefit-icon">📈</div>
+            <h3>Convierte mejor tu esfuerzo</h3>
+            <p>Haz que tus redes trabajen a tu favor con contenido pensado para atraer atención, generar confianza y apoyar tus ventas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="confianza">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="eyebrow">Confianza</span>
+          <h2>Diseñado para negocios que necesitan resultados, no más complejidad</h2>
+          <p class="section-sub">
+            Especialmente útil para personas que quieren verse activas en redes sin aprender herramientas complicadas ni perder horas cada semana.
+          </p>
+        </div>
+
+        <div class="trust-grid">
+          <div class="trust-card">
+            <h3>Ideal para negocios como:</h3>
+            <div class="business-list">
+              <div class="business-item">Restaurantes y cafeterías</div>
+              <div class="business-item">Estéticas y bienestar</div>
+              <div class="business-item">Tiendas online</div>
+              <div class="business-item">Coaches y servicios</div>
+              <div class="business-item">Negocios locales</div>
+              <div class="business-item">Marcas personales</div>
+            </div>
+          </div>
+
+          <div class="trust-card">
+            <h3>Por qué genera confianza</h3>
+            <div class="stat-boxes">
+              <div class="stat">
+                <strong>Proceso guiado</strong>
+                <span>No necesitas conocimientos técnicos para empezar.</span>
+              </div>
+              <div class="stat">
+                <strong>Revisión simple</strong>
+                <span>Apruebas contenido sin entrar en sistemas complicados.</span>
+              </div>
+              <div class="stat">
+                <strong>Enfoque práctico</strong>
+                <span>Hecho para ahorrar tiempo y ayudar a publicar con consistencia.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box">
+          <span class="eyebrow">Empieza ahora</span>
+          <h2>Empieza gratis y descubre cómo se vería tu negocio con contenido automatizado</h2>
+          <p>
+            Solicita acceso, cuéntanos tu negocio y te guiamos en la configuración. Sin tarjeta, sin complicaciones y pensado para que puedas hacerlo desde el móvil.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="probar-gratis.html">Empieza gratis en 2 minutos</a>
+            <a class="btn btn-secondary" href="probar-gratis.html">Quiero probar Inputora</a>
+          </div>
+
+          <div class="micro-trust" style="justify-content:center; margin-top:18px;">
+            <span>✔ <strong>Sin tarjeta</strong></span>
+            <span>✔ <strong>Configuración guiada</strong></span>
+            <span>✔ <strong>Ideal para móvil</strong></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © Inputora — Automatización de contenido para pequeños negocios
     </div>
-  </section>
+  </footer>
+
 </body>
 </html>
