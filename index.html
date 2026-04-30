@@ -6,43 +6,26 @@
   <title>Inputora | Automatiza tus redes sociales</title>
   <meta name="description" content="Automatiza la creación y publicación de contenido para redes sociales con IA. Ahorra tiempo, publica con constancia y empieza gratis con Inputora." />
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/dk6lytcvx/image/upload/v1776528743/Logo_Transparent_h6tnv3.png" />
   <link rel="apple-touch-icon" href="https://res.cloudinary.com/dk6lytcvx/image/upload/v1776528743/Logo_Transparent_h6tnv3.png" />
 
   <style>
     :root{
-      --bg:#090b14;
-      --bg-2:#101424;
-      --bg-3:#12182b;
-      --card:rgba(255,255,255,0.06);
-      --card-strong:rgba(255,255,255,0.08);
-      --border:rgba(255,255,255,0.12);
-      --text:#ffffff;
-      --muted:#b7c0d9;
-      --muted-2:#8d96b3;
-      --primary:#7c5cff;
-      --primary-2:#9c7dff;
-      --accent:#00d1ff;
-      --success:#71f0b1;
+      --bg:#090b14; --bg-2:#101424; --bg-3:#12182b;
+      --card:rgba(255,255,255,0.06); --card-strong:rgba(255,255,255,0.08);
+      --border:rgba(255,255,255,0.12); --text:#ffffff; --muted:#b7c0d9;
+      --muted-2:#8d96b3; --primary:#7c5cff; --primary-2:#9c7dff;
+      --accent:#00d1ff; --success:#71f0b1;
       --shadow:0 24px 80px rgba(0,0,0,.45);
       --shadow-soft:0 12px 40px rgba(0,0,0,.30);
-      --radius:24px;
-      --radius-sm:16px;
-      --max:1180px;
+      --radius:24px; --radius-sm:16px; --max:1180px;
     }
 
-    *{
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       color:var(--text);
       background:
         radial-gradient(circle at top left, rgba(124,92,255,.22), transparent 32%),
@@ -52,26 +35,13 @@
       overflow-x:hidden;
     }
 
-    img{
-      max-width:100%;
-      display:block;
-    }
-
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    .container{
-      width:min(100% - 32px, var(--max));
-      margin:0 auto;
-    }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(100% - 32px, var(--max));margin:0 auto}
 
     .site-header{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter: blur(14px);
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(14px);
       background:rgba(9,11,20,.72);
       border-bottom:1px solid rgba(255,255,255,.06);
     }
@@ -84,99 +54,82 @@
       gap:18px;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
-    }
-
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
     .brand-badge{
-      width:44px;
-      height:44px;
-      border-radius:14px;
-      background:rgba(255,255,255,.98);
-      padding:7px;
-      box-shadow:0 10px 30px rgba(0,0,0,.25);
-      flex-shrink:0;
+      width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.98);
+      padding:7px;box-shadow:0 10px 30px rgba(0,0,0,.25);
+      flex-shrink:0;display:flex;align-items:center;justify-content:center;
+    }
+    .brand-badge img{width:100%;height:100%;object-fit:contain}
+    .brand-text{display:flex;flex-direction:column;gap:1px}
+    .brand-name{font-size:1rem;font-weight:700;letter-spacing:.01em}
+    .brand-sub{font-size:.82rem;color:var(--muted-2)}
+
+    .nav-actions{
       display:flex;
       align-items:center;
-      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
-    .brand-badge img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-    }
-
-    .brand-text{
+    .lang-toggle{
       display:flex;
-      flex-direction:column;
-      gap:1px;
+      gap:6px;
+      padding:4px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
     }
 
-    .brand-name{
-      font-size:1rem;
+    .lang-toggle button{
+      border:none;
+      border-radius:999px;
+      padding:8px 10px;
+      cursor:pointer;
+      color:#fff;
+      background:transparent;
       font-weight:700;
-      letter-spacing:.01em;
+      font-size:.82rem;
     }
 
-    .brand-sub{
-      font-size:.82rem;
-      color:var(--muted-2);
+    .lang-toggle button.active{
+      background:linear-gradient(135deg,var(--primary),var(--accent));
     }
 
     .nav-cta{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:999px;
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 18px;border-radius:999px;
       background:linear-gradient(135deg, var(--primary), var(--accent));
-      color:#fff;
-      font-weight:700;
-      font-size:.95rem;
-      box-shadow:0 14px 32px rgba(62, 86, 255, .28);
+      color:#fff;font-weight:700;font-size:.95rem;
+      box-shadow:0 14px 32px rgba(62,86,255,.28);
       white-space:nowrap;
       transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
     }
 
-    .nav-cta:hover,
-    .btn:hover{
+    .nav-cta:hover,.btn:hover{
       transform:translateY(-1px);
-      box-shadow:0 18px 38px rgba(62, 86, 255, .34);
+      box-shadow:0 18px 38px rgba(62,86,255,.34);
     }
 
-    .hero{
-      padding:54px 0 28px;
-    }
-
+    .hero{padding:54px 0 28px}
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.08fr .92fr;
+      grid-template-columns:1.08fr .92fr;
       gap:34px;
       align-items:center;
     }
 
     .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:9px 14px;
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:999px;
-      background:rgba(255,255,255,.04);
-      color:#dbe4ff;
-      font-size:.92rem;
-      margin-bottom:18px;
+      display:inline-flex;align-items:center;gap:10px;
+      padding:9px 14px;border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;background:rgba(255,255,255,.04);
+      color:#dbe4ff;font-size:.92rem;margin-bottom:18px;
       box-shadow:var(--shadow-soft);
     }
 
     .pill-dot{
-      width:9px;
-      height:9px;
-      border-radius:999px;
+      width:9px;height:9px;border-radius:999px;
       background:var(--success);
       box-shadow:0 0 14px var(--success);
       flex-shrink:0;
@@ -184,7 +137,7 @@
 
     h1{
       margin:0 0 16px;
-      font-size:clamp(2.2rem, 5.6vw, 4.3rem);
+      font-size:clamp(2.2rem,5.6vw,4.3rem);
       line-height:1.03;
       letter-spacing:-.04em;
       max-width:12ch;
@@ -193,33 +146,22 @@
     .hero p.lead{
       margin:0;
       max-width:620px;
-      font-size:clamp(1rem, 1.7vw, 1.18rem);
+      font-size:clamp(1rem,1.7vw,1.18rem);
       color:var(--muted);
     }
 
-    .cta-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-top:28px;
-    }
-
+    .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:54px;
-      padding:14px 22px;
-      border-radius:999px;
-      font-weight:700;
-      font-size:1rem;
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:54px;padding:14px 22px;border-radius:999px;
+      font-weight:700;font-size:1rem;
       transition:transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
     }
 
     .btn-primary{
-      background:linear-gradient(135deg, var(--primary), var(--accent));
+      background:linear-gradient(135deg,var(--primary),var(--accent));
       color:#fff;
-      box-shadow:0 16px 34px rgba(83, 110, 255, .28);
+      box-shadow:0 16px 34px rgba(83,110,255,.28);
     }
 
     .btn-secondary{
@@ -229,25 +171,12 @@
     }
 
     .micro-trust{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px 18px;
-      margin-top:18px;
-      color:#d6ddf6;
-      font-size:.95rem;
+      display:flex;flex-wrap:wrap;gap:12px 18px;
+      margin-top:18px;color:#d6ddf6;font-size:.95rem;
     }
 
-    .micro-trust span{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      white-space:nowrap;
-    }
-
-    .micro-trust strong{
-      color:#fff;
-      font-weight:600;
-    }
+    .micro-trust span{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+    .micro-trust strong{color:#fff;font-weight:600}
 
     .proof-list{
       display:grid;
@@ -257,7 +186,7 @@
     }
 
     .proof-item{
-      padding:16px 16px;
+      padding:16px;
       border-radius:18px;
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.08);
@@ -269,8 +198,7 @@
       position:relative;
       border-radius:30px;
       padding:22px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));
       border:1px solid rgba(255,255,255,.10);
       box-shadow:var(--shadow);
       overflow:hidden;
@@ -280,48 +208,22 @@
       content:"";
       position:absolute;
       inset:auto -20% -35% auto;
-      width:240px;
-      height:240px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(124,92,255,.28), transparent 65%);
+      width:240px;height:240px;border-radius:50%;
+      background:radial-gradient(circle,rgba(124,92,255,.28),transparent 65%);
       pointer-events:none;
     }
 
     .status-row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:18px;
-      padding:12px 14px;
-      border-radius:16px;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      margin-bottom:18px;padding:12px 14px;border-radius:16px;
       background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.08);
     }
 
-    .status-left{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-    }
-
-    .status-text{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-      min-width:0;
-    }
-
-    .status-title{
-      font-size:.95rem;
-      font-weight:700;
-    }
-
-    .status-sub{
-      font-size:.84rem;
-      color:var(--muted-2);
-    }
+    .status-left{display:flex;align-items:center;gap:10px;min-width:0}
+    .status-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+    .status-title{font-size:.95rem;font-weight:700}
+    .status-sub{font-size:.84rem;color:var(--muted-2)}
 
     .image-shell{
       border-radius:22px;
@@ -338,47 +240,25 @@
     }
 
     .step{
-      padding:14px;
-      border-radius:18px;
+      padding:14px;border-radius:18px;
       background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.08);
       min-height:110px;
     }
 
     .step-number{
-      width:28px;
-      height:28px;
-      border-radius:999px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      font-size:.82rem;
-      font-weight:800;
-      background:linear-gradient(135deg, var(--primary), var(--accent));
+      width:28px;height:28px;border-radius:999px;
+      display:inline-flex;align-items:center;justify-content:center;
+      font-size:.82rem;font-weight:800;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
       margin-bottom:10px;
     }
 
-    .step h3{
-      margin:0 0 6px;
-      font-size:.98rem;
-    }
+    .step h3{margin:0 0 6px;font-size:.98rem}
+    .step p{margin:0;color:var(--muted);font-size:.89rem;line-height:1.4}
 
-    .step p{
-      margin:0;
-      color:var(--muted);
-      font-size:.89rem;
-      line-height:1.4;
-    }
-
-    section{
-      padding:34px 0;
-    }
-
-    .section-title-wrap{
-      max-width:760px;
-      margin:0 auto 22px;
-      text-align:center;
-    }
+    section{padding:34px 0}
+    .section-title-wrap{max-width:760px;margin:0 auto 22px;text-align:center}
 
     .eyebrow{
       display:inline-block;
@@ -391,7 +271,7 @@
 
     h2{
       margin:0 0 10px;
-      font-size:clamp(1.7rem, 3vw, 2.7rem);
+      font-size:clamp(1.7rem,3vw,2.7rem);
       line-height:1.08;
       letter-spacing:-.03em;
     }
@@ -405,47 +285,30 @@
 
     .benefits-grid{
       display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
+      grid-template-columns:repeat(3,minmax(0,1fr));
       gap:18px;
       margin-top:24px;
     }
 
-    .benefit-card,
-    .trust-card,
-    .cta-box{
+    .benefit-card,.trust-card,.cta-box{
       border-radius:24px;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.035));
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.035));
       border:1px solid rgba(255,255,255,.09);
       box-shadow:var(--shadow-soft);
     }
 
-    .benefit-card{
-      padding:22px;
-    }
-
+    .benefit-card{padding:22px}
     .benefit-icon{
-      width:46px;
-      height:46px;
-      border-radius:14px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      width:46px;height:46px;border-radius:14px;
+      display:flex;align-items:center;justify-content:center;
       font-size:1.15rem;
       background:rgba(124,92,255,.16);
       border:1px solid rgba(124,92,255,.28);
       margin-bottom:14px;
     }
 
-    .benefit-card h3{
-      margin:0 0 8px;
-      font-size:1.14rem;
-    }
-
-    .benefit-card p{
-      margin:0;
-      color:var(--muted);
-      font-size:.98rem;
-    }
+    .benefit-card h3{margin:0 0 8px;font-size:1.14rem}
+    .benefit-card p{margin:0;color:var(--muted);font-size:.98rem}
 
     .trust-grid{
       display:grid;
@@ -454,18 +317,12 @@
       margin-top:24px;
     }
 
-    .trust-card{
-      padding:24px;
-    }
-
-    .trust-card h3{
-      margin:0 0 16px;
-      font-size:1.18rem;
-    }
+    .trust-card{padding:24px}
+    .trust-card h3{margin:0 0 16px;font-size:1.18rem}
 
     .business-list{
       display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
+      grid-template-columns:repeat(2,minmax(0,1fr));
       gap:12px;
     }
 
@@ -479,11 +336,7 @@
       font-weight:600;
     }
 
-    .stat-boxes{
-      display:grid;
-      gap:14px;
-    }
-
+    .stat-boxes{display:grid;gap:14px}
     .stat{
       padding:18px;
       border-radius:18px;
@@ -498,15 +351,9 @@
       letter-spacing:-.03em;
     }
 
-    .stat span{
-      color:var(--muted);
-      font-size:.96rem;
-    }
+    .stat span{color:var(--muted);font-size:.96rem}
 
-    .cta-section{
-      padding:28px 0 64px;
-    }
-
+    .cta-section{padding:28px 0 64px}
     .cta-box{
       padding:28px;
       text-align:center;
@@ -517,30 +364,15 @@
     .cta-box::after{
       content:"";
       position:absolute;
-      width:280px;
-      height:280px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(0,209,255,.14), transparent 68%);
-      right:-90px;
-      top:-120px;
+      width:280px;height:280px;border-radius:50%;
+      background:radial-gradient(circle,rgba(0,209,255,.14),transparent 68%);
+      right:-90px;top:-120px;
       pointer-events:none;
     }
 
-    .cta-box h2{
-      max-width:780px;
-      margin:0 auto 12px;
-    }
-
-    .cta-box p{
-      max-width:700px;
-      margin:0 auto;
-      color:var(--muted);
-      font-size:1rem;
-    }
-
-    .cta-box .cta-row{
-      justify-content:center;
-    }
+    .cta-box h2{max-width:780px;margin:0 auto 12px}
+    .cta-box p{max-width:700px;margin:0 auto;color:var(--muted);font-size:1rem}
+    .cta-box .cta-row{justify-content:center}
 
     .footer{
       padding:20px 0 36px;
@@ -549,118 +381,38 @@
       text-align:center;
     }
 
-    @media (max-width: 1024px){
-      .hero-grid,
-      .trust-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero{
-        padding-top:36px;
-      }
-
-      h1{
-        max-width:14ch;
-      }
-
-      .proof-list,
-      .benefits-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .workflow{
-        grid-template-columns:1fr 1fr;
-      }
+    @media (max-width:1024px){
+      .hero-grid,.trust-grid{grid-template-columns:1fr}
+      .hero{padding-top:36px}
+      h1{max-width:14ch}
+      .proof-list,.benefits-grid{grid-template-columns:1fr 1fr}
+      .workflow{grid-template-columns:1fr 1fr}
     }
 
-    @media (max-width: 720px){
-      .container{
-        width:min(100% - 22px, var(--max));
-      }
-
-      .nav{
-        min-height:72px;
-      }
-
-      .brand-badge{
-        width:40px;
-        height:40px;
-        border-radius:12px;
-        padding:6px;
-      }
-
-      .brand-sub{
-        display:none;
-      }
-
-      .nav-cta{
-        padding:11px 14px;
-        font-size:.9rem;
-      }
-
-      .hero{
-        padding:24px 0 20px;
-      }
-
-      .pill{
-        margin-bottom:14px;
-        font-size:.86rem;
-      }
-
-      h1{
-        font-size:clamp(2rem, 10vw, 2.8rem);
-        max-width:100%;
-      }
-
-      .hero p.lead{
-        font-size:1rem;
-      }
-
-      .cta-row{
-        flex-direction:column;
-        align-items:stretch;
-      }
-
-      .btn{
-        width:100%;
-      }
-
-      .proof-list,
-      .benefits-grid,
-      .business-list,
-      .workflow{
-        grid-template-columns:1fr;
-      }
-
-      .micro-trust{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:10px;
-      }
-
-      .hero-card,
-      .benefit-card,
-      .trust-card,
-      .cta-box{
-        border-radius:22px;
-      }
-
-      .step{
-        min-height:auto;
-      }
-
-      section{
-        padding:28px 0;
-      }
-
-      .cta-section{
-        padding-bottom:52px;
-      }
+    @media (max-width:720px){
+      .container{width:min(100% - 22px,var(--max))}
+      .nav{min-height:72px}
+      .brand-badge{width:40px;height:40px;border-radius:12px;padding:6px}
+      .brand-sub{display:none}
+      .nav-actions{gap:8px}
+      .nav-cta{padding:11px 14px;font-size:.9rem}
+      .hero{padding:24px 0 20px}
+      .pill{margin-bottom:14px;font-size:.86rem}
+      h1{font-size:clamp(2rem,10vw,2.8rem);max-width:100%}
+      .hero p.lead{font-size:1rem}
+      .cta-row{flex-direction:column;align-items:stretch}
+      .btn{width:100%}
+      .proof-list,.benefits-grid,.business-list,.workflow{grid-template-columns:1fr}
+      .micro-trust{flex-direction:column;align-items:flex-start;gap:10px}
+      .hero-card,.benefit-card,.trust-card,.cta-box{border-radius:22px}
+      .step{min-height:auto}
+      section{padding:28px 0}
+      .cta-section{padding-bottom:52px}
     }
   </style>
 </head>
-<body>
 
+<body>
   <header class="site-header">
     <div class="container nav">
       <a href="#" class="brand" aria-label="Inputora">
@@ -669,11 +421,17 @@
         </div>
         <div class="brand-text">
           <span class="brand-name">Inputora</span>
-          <span class="brand-sub">Automatización de contenido con IA</span>
+          <span class="brand-sub" data-i18n="brandSub">Automatización de contenido con IA</span>
         </div>
       </a>
 
-      <a class="nav-cta" href="probar-gratis.html">Empieza gratis</a>
+      <div class="nav-actions">
+        <div class="lang-toggle">
+          <button id="langEsBtn" class="active" onclick="setLanguage('es')">ES</button>
+          <button id="langEnBtn" onclick="setLanguage('en')">EN</button>
+        </div>
+        <a class="nav-cta" href="probar-gratis.html" data-i18n="navCta">Empieza gratis</a>
+      </div>
     </div>
   </header>
 
@@ -683,30 +441,30 @@
         <div class="hero-copy">
           <div class="pill">
             <span class="pill-dot"></span>
-            Automatización sencilla para negocios reales
+            <span data-i18n="heroPill">Automatización sencilla para negocios reales</span>
           </div>
 
-          <h1>Automatiza tus redes sociales y ahorra horas cada semana</h1>
+          <h1 data-i18n="heroTitle">Automatiza tus redes sociales y ahorra horas cada semana</h1>
 
-          <p class="lead">
+          <p class="lead" data-i18n="heroLead">
             Crea, aprueba y publica contenido automáticamente con IA. Menos tiempo pensando qué subir, más tiempo para atender tu negocio y conseguir clientes.
           </p>
 
           <div class="cta-row">
-            <a class="btn btn-primary" href="probar-gratis.html">Empieza gratis en 2 minutos</a>
-            <a class="btn btn-secondary" href="probar-gratis.html">Solicitar acceso ahora</a>
+            <a class="btn btn-primary" href="probar-gratis.html" data-i18n="primaryCta">Empieza gratis en 2 minutos</a>
+            <a class="btn btn-secondary" href="probar-gratis.html" data-i18n="secondaryCta">Solicitar acceso ahora</a>
           </div>
 
-          <div class="micro-trust" aria-label="Elementos de confianza">
-            <span>✔ <strong>Sin tarjeta</strong></span>
-            <span>✔ <strong>Configuración guiada</strong></span>
-            <span>✔ <strong>Respuesta en menos de 24h</strong></span>
+          <div class="micro-trust">
+            <span data-i18n="trustCard">✔ <strong>Sin tarjeta</strong></span>
+            <span data-i18n="trustGuided">✔ <strong>Configuración guiada</strong></span>
+            <span data-i18n="trustResponse">✔ <strong>Respuesta en menos de 24h</strong></span>
           </div>
 
           <div class="proof-list">
-            <div class="proof-item">✓ Sin conocimientos técnicos</div>
-            <div class="proof-item">✓ Ideal para móvil y QR</div>
-            <div class="proof-item">✓ Pensado para pequeños negocios</div>
+            <div class="proof-item" data-i18n="proof1">✓ Sin conocimientos técnicos</div>
+            <div class="proof-item" data-i18n="proof2">✓ Ideal para móvil y QR</div>
+            <div class="proof-item" data-i18n="proof3">✓ Pensado para pequeños negocios</div>
           </div>
         </div>
 
@@ -715,8 +473,8 @@
             <div class="status-left">
               <span class="pill-dot"></span>
               <div class="status-text">
-                <span class="status-title">Sistema activo</span>
-                <span class="status-sub">Contenido automatizado, revisión simple y publicación lista</span>
+                <span class="status-title" data-i18n="systemActive">Sistema activo</span>
+                <span class="status-sub" data-i18n="systemSub">Contenido automatizado, revisión simple y publicación lista</span>
               </div>
             </div>
           </div>
@@ -731,23 +489,23 @@
           <div class="workflow">
             <div class="step">
               <div class="step-number">1</div>
-              <h3>Creas</h3>
-              <p>Nos cuentas tu negocio y el tipo de contenido que necesitas.</p>
+              <h3 data-i18n="step1Title">Creas</h3>
+              <p data-i18n="step1Text">Nos cuentas tu negocio y el tipo de contenido que necesitas.</p>
             </div>
             <div class="step">
               <div class="step-number">2</div>
-              <h3>La IA prepara</h3>
-              <p>Inputora genera ideas, textos y piezas listas para revisar.</p>
+              <h3 data-i18n="step2Title">La IA prepara</h3>
+              <p data-i18n="step2Text">Inputora genera ideas, textos y piezas listas para revisar.</p>
             </div>
             <div class="step">
               <div class="step-number">3</div>
-              <h3>Apruebas</h3>
-              <p>Revisas de forma simple desde tu móvil, sin complicaciones.</p>
+              <h3 data-i18n="step3Title">Apruebas</h3>
+              <p data-i18n="step3Text">Revisas de forma simple desde tu móvil, sin complicaciones.</p>
             </div>
             <div class="step">
               <div class="step-number">4</div>
-              <h3>Publicamos</h3>
-              <p>Tu contenido sale con constancia sin perder tiempo cada día.</p>
+              <h3 data-i18n="step4Title">Publicamos</h3>
+              <p data-i18n="step4Text">Tu contenido sale con constancia sin perder tiempo cada día.</p>
             </div>
           </div>
         </div>
@@ -757,9 +515,9 @@
     <section id="beneficios">
       <div class="container">
         <div class="section-title-wrap">
-          <span class="eyebrow">Beneficios</span>
-          <h2>Menos trabajo manual. Más constancia. Más oportunidades de venta.</h2>
-          <p class="section-sub">
+          <span class="eyebrow" data-i18n="benefitsEyebrow">Beneficios</span>
+          <h2 data-i18n="benefitsTitle">Menos trabajo manual. Más constancia. Más oportunidades de venta.</h2>
+          <p class="section-sub" data-i18n="benefitsSub">
             Inputora no solo automatiza tareas. Te ayuda a mantener tus redes activas sin que tengas que dedicar horas cada semana.
           </p>
         </div>
@@ -767,20 +525,20 @@
         <div class="benefits-grid">
           <article class="benefit-card">
             <div class="benefit-icon">⏱️</div>
-            <h3>Ahorra tiempo real</h3>
-            <p>Deja de pensar cada día qué publicar. Organiza semanas de contenido en minutos y dedica ese tiempo a tu negocio.</p>
+            <h3 data-i18n="benefit1Title">Ahorra tiempo real</h3>
+            <p data-i18n="benefit1Text">Deja de pensar cada día qué publicar. Organiza semanas de contenido en minutos y dedica ese tiempo a tu negocio.</p>
           </article>
 
           <article class="benefit-card">
             <div class="benefit-icon">📲</div>
-            <h3>Publica con constancia</h3>
-            <p>Mantén una presencia activa sin depender de inspiración, recordatorios o estar pendiente del móvil constantemente.</p>
+            <h3 data-i18n="benefit2Title">Publica con constancia</h3>
+            <p data-i18n="benefit2Text">Mantén una presencia activa sin depender de inspiración, recordatorios o estar pendiente del móvil constantemente.</p>
           </article>
 
           <article class="benefit-card">
             <div class="benefit-icon">📈</div>
-            <h3>Convierte mejor tu esfuerzo</h3>
-            <p>Haz que tus redes trabajen a tu favor con contenido pensado para atraer atención, generar confianza y apoyar tus ventas.</p>
+            <h3 data-i18n="benefit3Title">Convierte mejor tu esfuerzo</h3>
+            <p data-i18n="benefit3Text">Haz que tus redes trabajen a tu favor con contenido pensado para atraer atención, generar confianza y apoyar tus ventas.</p>
           </article>
         </div>
       </div>
@@ -789,40 +547,40 @@
     <section id="confianza">
       <div class="container">
         <div class="section-title-wrap">
-          <span class="eyebrow">Confianza</span>
-          <h2>Diseñado para negocios que necesitan resultados, no más complejidad</h2>
-          <p class="section-sub">
+          <span class="eyebrow" data-i18n="trustEyebrow">Confianza</span>
+          <h2 data-i18n="trustTitle">Diseñado para negocios que necesitan resultados, no más complejidad</h2>
+          <p class="section-sub" data-i18n="trustSub">
             Especialmente útil para personas que quieren verse activas en redes sin aprender herramientas complicadas ni perder horas cada semana.
           </p>
         </div>
 
         <div class="trust-grid">
           <div class="trust-card">
-            <h3>Ideal para negocios como:</h3>
+            <h3 data-i18n="idealTitle">Ideal para negocios como:</h3>
             <div class="business-list">
-              <div class="business-item">Restaurantes y cafeterías</div>
-              <div class="business-item">Estéticas y bienestar</div>
-              <div class="business-item">Tiendas online</div>
-              <div class="business-item">Coaches y servicios</div>
-              <div class="business-item">Negocios locales</div>
-              <div class="business-item">Marcas personales</div>
+              <div class="business-item" data-i18n="business1">Restaurantes y cafeterías</div>
+              <div class="business-item" data-i18n="business2">Estéticas y bienestar</div>
+              <div class="business-item" data-i18n="business3">Tiendas online</div>
+              <div class="business-item" data-i18n="business4">Coaches y servicios</div>
+              <div class="business-item" data-i18n="business5">Negocios locales</div>
+              <div class="business-item" data-i18n="business6">Marcas personales</div>
             </div>
           </div>
 
           <div class="trust-card">
-            <h3>Por qué genera confianza</h3>
+            <h3 data-i18n="whyTrustTitle">Por qué genera confianza</h3>
             <div class="stat-boxes">
               <div class="stat">
-                <strong>Proceso guiado</strong>
-                <span>No necesitas conocimientos técnicos para empezar.</span>
+                <strong data-i18n="stat1Title">Proceso guiado</strong>
+                <span data-i18n="stat1Text">No necesitas conocimientos técnicos para empezar.</span>
               </div>
               <div class="stat">
-                <strong>Revisión simple</strong>
-                <span>Apruebas contenido sin entrar en sistemas complicados.</span>
+                <strong data-i18n="stat2Title">Revisión simple</strong>
+                <span data-i18n="stat2Text">Apruebas contenido sin entrar en sistemas complicados.</span>
               </div>
               <div class="stat">
-                <strong>Enfoque práctico</strong>
-                <span>Hecho para ahorrar tiempo y ayudar a publicar con consistencia.</span>
+                <strong data-i18n="stat3Title">Enfoque práctico</strong>
+                <span data-i18n="stat3Text">Hecho para ahorrar tiempo y ayudar a publicar con consistencia.</span>
               </div>
             </div>
           </div>
@@ -833,21 +591,21 @@
     <section class="cta-section">
       <div class="container">
         <div class="cta-box">
-          <span class="eyebrow">Empieza ahora</span>
-          <h2>Empieza gratis y descubre cómo se vería tu negocio con contenido automatizado</h2>
-          <p>
+          <span class="eyebrow" data-i18n="finalEyebrow">Empieza ahora</span>
+          <h2 data-i18n="finalTitle">Empieza gratis y descubre cómo se vería tu negocio con contenido automatizado</h2>
+          <p data-i18n="finalText">
             Solicita acceso, cuéntanos tu negocio y te guiamos en la configuración. Sin tarjeta, sin complicaciones y pensado para que puedas hacerlo desde el móvil.
           </p>
 
           <div class="cta-row">
-            <a class="btn btn-primary" href="probar-gratis.html">Empieza gratis en 2 minutos</a>
-            <a class="btn btn-secondary" href="probar-gratis.html">Quiero probar Inputora</a>
+            <a class="btn btn-primary" href="probar-gratis.html" data-i18n="primaryCta">Empieza gratis en 2 minutos</a>
+            <a class="btn btn-secondary" href="probar-gratis.html" data-i18n="finalSecondaryCta">Quiero probar Inputora</a>
           </div>
 
           <div class="micro-trust" style="justify-content:center; margin-top:18px;">
-            <span>✔ <strong>Sin tarjeta</strong></span>
-            <span>✔ <strong>Configuración guiada</strong></span>
-            <span>✔ <strong>Ideal para móvil</strong></span>
+            <span data-i18n="trustCard">✔ <strong>Sin tarjeta</strong></span>
+            <span data-i18n="trustGuided">✔ <strong>Configuración guiada</strong></span>
+            <span data-i18n="trustMobile">✔ <strong>Ideal para móvil</strong></span>
           </div>
         </div>
       </div>
@@ -855,10 +613,159 @@
   </main>
 
   <footer class="footer">
-    <div class="container">
+    <div class="container" data-i18n="footer">
       © Inputora — Automatización de contenido para pequeños negocios
     </div>
   </footer>
 
+  <script>
+    let LANG = localStorage.getItem('inputoraSiteLang') || 'es';
+
+    const TEXT = {
+      es: {
+        pageTitle: 'Inputora | Automatiza tus redes sociales',
+        pageDescription: 'Automatiza la creación y publicación de contenido para redes sociales con IA. Ahorra tiempo, publica con constancia y empieza gratis con Inputora.',
+        brandSub: 'Automatización de contenido con IA',
+        navCta: 'Empieza gratis',
+        heroPill: 'Automatización sencilla para negocios reales',
+        heroTitle: 'Automatiza tus redes sociales y ahorra horas cada semana',
+        heroLead: 'Crea, aprueba y publica contenido automáticamente con IA. Menos tiempo pensando qué subir, más tiempo para atender tu negocio y conseguir clientes.',
+        primaryCta: 'Empieza gratis en 2 minutos',
+        secondaryCta: 'Solicitar acceso ahora',
+        trustCard: '✔ Sin tarjeta',
+        trustGuided: '✔ Configuración guiada',
+        trustResponse: '✔ Respuesta en menos de 24h',
+        trustMobile: '✔ Ideal para móvil',
+        proof1: '✓ Sin conocimientos técnicos',
+        proof2: '✓ Ideal para móvil y QR',
+        proof3: '✓ Pensado para pequeños negocios',
+        systemActive: 'Sistema activo',
+        systemSub: 'Contenido automatizado, revisión simple y publicación lista',
+        step1Title: 'Creas',
+        step1Text: 'Nos cuentas tu negocio y el tipo de contenido que necesitas.',
+        step2Title: 'La IA prepara',
+        step2Text: 'Inputora genera ideas, textos y piezas listas para revisar.',
+        step3Title: 'Apruebas',
+        step3Text: 'Revisas de forma simple desde tu móvil, sin complicaciones.',
+        step4Title: 'Publicamos',
+        step4Text: 'Tu contenido sale con constancia sin perder tiempo cada día.',
+        benefitsEyebrow: 'Beneficios',
+        benefitsTitle: 'Menos trabajo manual. Más constancia. Más oportunidades de venta.',
+        benefitsSub: 'Inputora no solo automatiza tareas. Te ayuda a mantener tus redes activas sin que tengas que dedicar horas cada semana.',
+        benefit1Title: 'Ahorra tiempo real',
+        benefit1Text: 'Deja de pensar cada día qué publicar. Organiza semanas de contenido en minutos y dedica ese tiempo a tu negocio.',
+        benefit2Title: 'Publica con constancia',
+        benefit2Text: 'Mantén una presencia activa sin depender de inspiración, recordatorios o estar pendiente del móvil constantemente.',
+        benefit3Title: 'Convierte mejor tu esfuerzo',
+        benefit3Text: 'Haz que tus redes trabajen a tu favor con contenido pensado para atraer atención, generar confianza y apoyar tus ventas.',
+        trustEyebrow: 'Confianza',
+        trustTitle: 'Diseñado para negocios que necesitan resultados, no más complejidad',
+        trustSub: 'Especialmente útil para personas que quieren verse activas en redes sin aprender herramientas complicadas ni perder horas cada semana.',
+        idealTitle: 'Ideal para negocios como:',
+        business1: 'Restaurantes y cafeterías',
+        business2: 'Estéticas y bienestar',
+        business3: 'Tiendas online',
+        business4: 'Coaches y servicios',
+        business5: 'Negocios locales',
+        business6: 'Marcas personales',
+        whyTrustTitle: 'Por qué genera confianza',
+        stat1Title: 'Proceso guiado',
+        stat1Text: 'No necesitas conocimientos técnicos para empezar.',
+        stat2Title: 'Revisión simple',
+        stat2Text: 'Apruebas contenido sin entrar en sistemas complicados.',
+        stat3Title: 'Enfoque práctico',
+        stat3Text: 'Hecho para ahorrar tiempo y ayudar a publicar con consistencia.',
+        finalEyebrow: 'Empieza ahora',
+        finalTitle: 'Empieza gratis y descubre cómo se vería tu negocio con contenido automatizado',
+        finalText: 'Solicita acceso, cuéntanos tu negocio y te guiamos en la configuración. Sin tarjeta, sin complicaciones y pensado para que puedas hacerlo desde el móvil.',
+        finalSecondaryCta: 'Quiero probar Inputora',
+        footer: '© Inputora — Automatización de contenido para pequeños negocios'
+      },
+      en: {
+        pageTitle: 'Inputora | Automate your social media',
+        pageDescription: 'Automate social media content creation and publishing with AI. Save time, post consistently, and start free with Inputora.',
+        brandSub: 'AI content automation',
+        navCta: 'Start free',
+        heroPill: 'Simple automation for real businesses',
+        heroTitle: 'Automate your social media and save hours every week',
+        heroLead: 'Create, approve, and publish content automatically with AI. Spend less time thinking about what to post and more time serving your business and getting clients.',
+        primaryCta: 'Start free in 2 minutes',
+        secondaryCta: 'Request access now',
+        trustCard: '✔ No card required',
+        trustGuided: '✔ Guided setup',
+        trustResponse: '✔ Response in under 24h',
+        trustMobile: '✔ Mobile friendly',
+        proof1: '✓ No technical knowledge needed',
+        proof2: '✓ Ideal for mobile and QR',
+        proof3: '✓ Built for small businesses',
+        systemActive: 'System active',
+        systemSub: 'Automated content, simple review, and publishing ready',
+        step1Title: 'Create',
+        step1Text: 'Tell us about your business and the type of content you need.',
+        step2Title: 'AI prepares',
+        step2Text: 'Inputora generates ideas, captions, and content ready to review.',
+        step3Title: 'Approve',
+        step3Text: 'Review everything easily from your phone, without complications.',
+        step4Title: 'We publish',
+        step4Text: 'Your content goes out consistently without wasting time every day.',
+        benefitsEyebrow: 'Benefits',
+        benefitsTitle: 'Less manual work. More consistency. More sales opportunities.',
+        benefitsSub: 'Inputora does more than automate tasks. It helps you keep your social media active without spending hours every week.',
+        benefit1Title: 'Save real time',
+        benefit1Text: 'Stop wondering what to post every day. Organize weeks of content in minutes and spend that time on your business.',
+        benefit2Title: 'Post consistently',
+        benefit2Text: 'Maintain an active presence without relying on inspiration, reminders, or constantly checking your phone.',
+        benefit3Title: 'Get more from your effort',
+        benefit3Text: 'Make your social media work for you with content designed to attract attention, build trust, and support sales.',
+        trustEyebrow: 'Trust',
+        trustTitle: 'Designed for businesses that need results, not more complexity',
+        trustSub: 'Especially useful for people who want to stay active on social media without learning complicated tools or losing hours every week.',
+        idealTitle: 'Ideal for businesses like:',
+        business1: 'Restaurants and cafés',
+        business2: 'Beauty and wellness',
+        business3: 'Online stores',
+        business4: 'Coaches and services',
+        business5: 'Local businesses',
+        business6: 'Personal brands',
+        whyTrustTitle: 'Why it builds trust',
+        stat1Title: 'Guided process',
+        stat1Text: 'You do not need technical knowledge to get started.',
+        stat2Title: 'Simple review',
+        stat2Text: 'Approve content without entering complicated systems.',
+        stat3Title: 'Practical focus',
+        stat3Text: 'Built to save time and help you publish consistently.',
+        finalEyebrow: 'Start now',
+        finalTitle: 'Start free and see how your business could look with automated content',
+        finalText: 'Request access, tell us about your business, and we will guide you through the setup. No card, no complications, and designed to work from your phone.',
+        finalSecondaryCta: 'I want to try Inputora',
+        footer: '© Inputora — Content automation for small businesses'
+      }
+    };
+
+    function setLanguage(lang){
+      LANG = lang;
+      localStorage.setItem('inputoraSiteLang', LANG);
+      applyLanguage();
+    }
+
+    function applyLanguage(){
+      const dictionary = TEXT[LANG] || TEXT.es;
+
+      document.documentElement.lang = LANG;
+      document.title = dictionary.pageTitle;
+      const description = document.querySelector('meta[name="description"]');
+      if(description) description.setAttribute('content', dictionary.pageDescription);
+
+      document.getElementById('langEsBtn').classList.toggle('active', LANG === 'es');
+      document.getElementById('langEnBtn').classList.toggle('active', LANG === 'en');
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if(dictionary[key]) el.textContent = dictionary[key];
+      });
+    }
+
+    window.addEventListener('load', applyLanguage);
+  </script>
 </body>
 </html>
