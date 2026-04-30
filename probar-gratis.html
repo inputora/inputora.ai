@@ -604,7 +604,8 @@
 
           <div class="iframe-shell">
             <iframe
-              src="https://script.google.com/macros/s/AKfycbw_bTlGJPOTQqQtemVqEs8WeWVLqhwEsxI_R5K8_f62EGvftvATgHns8vQdEpUNU1BA/exec"
+              id="inputoraFormFrame"
+              src=""
               title="Formulario de prueba gratis Inputora"
               loading="lazy"
             ></iframe>
@@ -654,6 +655,8 @@
 
   <script>
     let LANG = localStorage.getItem('inputoraSiteLang') || 'es';
+
+    const FORM_URL = 'https://script.google.com/macros/s/AKfycbw_bTlGJPOTQqQtemVqEs8WeWVLqhwEsxI_R5K8_f62EGvftvATgHns8vQdEpUNU1BA/exec';
 
     const TEXT = {
       es: {
@@ -736,6 +739,13 @@
       applyLanguage();
     }
 
+    function updateIframeLanguage() {
+      const formFrame = document.getElementById('inputoraFormFrame');
+      if (formFrame) {
+        formFrame.src = FORM_URL + '?lang=' + encodeURIComponent(LANG);
+      }
+    }
+
     function applyLanguage(){
       const dictionary = TEXT[LANG] || TEXT.es;
 
@@ -752,6 +762,8 @@
         const key = el.getAttribute('data-i18n');
         if(dictionary[key]) el.textContent = dictionary[key];
       });
+
+      updateIframeLanguage();
     }
 
     window.addEventListener('load', applyLanguage);
