@@ -429,6 +429,7 @@
         <div class="lang-toggle">
           <button id="langEsBtn" class="active" onclick="setLanguage('es')">ES</button>
           <button id="langEnBtn" onclick="setLanguage('en')">EN</button>
+          <button id="langItBtn" onclick="setLanguage('it')">IT</button>
         </div>
         <a class="nav-cta" href="probar-gratis.html" data-i18n="navCta">Empieza gratis</a>
       </div>
@@ -739,6 +740,65 @@
         finalText: 'Request access, tell us about your business, and we will guide you through the setup. No card, no complications, and designed to work from your phone.',
         finalSecondaryCta: 'I want to try Inputora',
         footer: '© Inputora — Content automation for small businesses'
+      },
+      it: {
+        pageTitle: 'Inputora | Automatizza i tuoi social media',
+        pageDescription: 'Automatizza la creazione e la pubblicazione di contenuti per i social media con l’IA. Risparmia tempo, pubblica con costanza e inizia gratis con Inputora.',
+        brandSub: 'Automazione dei contenuti con IA',
+        navCta: 'Inizia gratis',
+        heroPill: 'Automazione semplice per attività reali',
+        heroTitle: 'Automatizza i tuoi social e risparmia ore ogni settimana',
+        heroLead: 'Crea, approva e pubblica contenuti automaticamente con l’IA. Meno tempo a pensare cosa pubblicare, più tempo per seguire la tua attività e trovare nuovi clienti.',
+        primaryCta: 'Inizia gratis in 2 minuti',
+        secondaryCta: 'Richiedi accesso ora',
+        trustCard: '✔ Nessuna carta richiesta',
+        trustGuided: '✔ Configurazione guidata',
+        trustResponse: '✔ Risposta entro 24 ore',
+        trustMobile: '✔ Ideale da mobile',
+        proof1: '✓ Nessuna conoscenza tecnica richiesta',
+        proof2: '✓ Ideale per mobile e QR',
+        proof3: '✓ Pensato per piccole attività',
+        systemActive: 'Sistema attivo',
+        systemSub: 'Contenuti automatizzati, revisione semplice e pubblicazione pronta',
+        step1Title: 'Crei',
+        step1Text: 'Ci racconti la tua attività e il tipo di contenuto di cui hai bisogno.',
+        step2Title: 'L’IA prepara',
+        step2Text: 'Inputora genera idee, testi e contenuti pronti da revisionare.',
+        step3Title: 'Approvi',
+        step3Text: 'Revisioni tutto facilmente dal telefono, senza complicazioni.',
+        step4Title: 'Pubblichiamo',
+        step4Text: 'I tuoi contenuti vengono pubblicati con costanza senza perdere tempo ogni giorno.',
+        benefitsEyebrow: 'Vantaggi',
+        benefitsTitle: 'Meno lavoro manuale. Più costanza. Più opportunità di vendita.',
+        benefitsSub: 'Inputora non automatizza solo le attività. Ti aiuta a mantenere attivi i tuoi social senza dedicare ore ogni settimana.',
+        benefit1Title: 'Risparmia tempo reale',
+        benefit1Text: 'Smetti di chiederti ogni giorno cosa pubblicare. Organizza settimane di contenuti in pochi minuti e dedica quel tempo alla tua attività.',
+        benefit2Title: 'Pubblica con costanza',
+        benefit2Text: 'Mantieni una presenza attiva senza dipendere dall’ispirazione, dai promemoria o dal controllo continuo del telefono.',
+        benefit3Title: 'Ottieni di più dal tuo impegno',
+        benefit3Text: 'Fai lavorare i tuoi social per te con contenuti pensati per attirare attenzione, creare fiducia e supportare le vendite.',
+        trustEyebrow: 'Fiducia',
+        trustTitle: 'Progettato per attività che vogliono risultati, non più complessità',
+        trustSub: 'Particolarmente utile per chi vuole essere presente sui social senza imparare strumenti complicati o perdere ore ogni settimana.',
+        idealTitle: 'Ideale per attività come:',
+        business1: 'Ristoranti e caffetterie',
+        business2: 'Bellezza e benessere',
+        business3: 'Negozi online',
+        business4: 'Coach e servizi',
+        business5: 'Attività locali',
+        business6: 'Brand personali',
+        whyTrustTitle: 'Perché crea fiducia',
+        stat1Title: 'Processo guidato',
+        stat1Text: 'Non servono conoscenze tecniche per iniziare.',
+        stat2Title: 'Revisione semplice',
+        stat2Text: 'Approvi i contenuti senza entrare in sistemi complicati.',
+        stat3Title: 'Approccio pratico',
+        stat3Text: 'Creato per risparmiare tempo e aiutarti a pubblicare con costanza.',
+        finalEyebrow: 'Inizia ora',
+        finalTitle: 'Inizia gratis e scopri come potrebbe apparire la tua attività con contenuti automatizzati',
+        finalText: 'Richiedi accesso, raccontaci la tua attività e ti guideremo nella configurazione. Nessuna carta, nessuna complicazione e pensato per funzionare anche da mobile.',
+        finalSecondaryCta: 'Voglio provare Inputora',
+        footer: '© Inputora — Automazione dei contenuti per piccole attività'
       }
     };
 
@@ -758,6 +818,7 @@
 
       document.getElementById('langEsBtn').classList.toggle('active', LANG === 'es');
       document.getElementById('langEnBtn').classList.toggle('active', LANG === 'en');
+      document.getElementById('langItBtn').classList.toggle('active', LANG === 'it');
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
