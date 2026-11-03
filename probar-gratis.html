@@ -502,10 +502,47 @@
       .btn{width:100%}
       .helper-row{flex-direction:column;align-items:flex-start}
     }
+    /* Consistent V7 living silk background, decorative and behind the form */
+    body{background:#060914;isolation:isolate}
+    .inputora-wave-scene{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none;opacity:.79}
+    .inputora-wave-scene::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 15% 15%,rgba(101,40,200,.18),transparent 52%),radial-gradient(ellipse at 85% 65%,rgba(0,162,228,.14),transparent 52%)}
+    .silk-v5 .silk-layer{position:absolute;inset:0;width:100%;height:100%;left:0;top:0}
+    .silk-v5 .silk-back{opacity:.67;animation:silkSwell 34s ease-in-out infinite alternate}
+    .silk-v5 .silk-front{opacity:.84}
+    @keyframes silkSwell{from{transform:translate3d(-1.4%,1%,0) scale(1.02)}to{transform:translate3d(1.5%,-1.1%,0) scale(1.065)}}
+    body > main,body > footer{position:relative;z-index:1}
+    .info-card,.form-card,.faq-card{background-color:rgba(14,20,36,.91);backdrop-filter:blur(24px) saturate(.85);-webkit-backdrop-filter:blur(24px) saturate(.85);box-shadow:0 20px 55px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.035)}
+    @media(prefers-reduced-motion:reduce){.silk-v5 .silk-layer{animation:none}.silk-v5 animate{display:none}}
   </style>
 </head>
 
 <body>
+  <div class="inputora-wave-scene silk-v5" aria-hidden="true">
+    <svg class="silk-layer silk-back" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="silkBackGradient" x1="0" y1="0" x2="1" y2="1">
+          <stop stop-color="#05c5ec" stop-opacity=".05"/><stop offset=".23" stop-color="#15bde6" stop-opacity=".43"/><stop offset=".48" stop-color="#5026a8" stop-opacity=".48"/><stop offset=".75" stop-color="#e844a3" stop-opacity=".43"/><stop offset="1" stop-color="#04a6d8" stop-opacity=".09"/>
+        </linearGradient>
+        <filter id="silkBackBlur"><feGaussianBlur stdDeviation="23"/></filter>
+      </defs>
+      <path d="M-120 625 C 135 285 275 255 405 480 S 630 840 800 610 S 1080 225 1210 375 S 1400 655 1560 485 L1560 900 L-120 900Z" fill="url(#silkBackGradient)" filter="url(#silkBackBlur)"/>
+    </svg>
+    <svg class="silk-layer silk-front" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="silkSurface" x1="0" y1="0" x2=".15" y2="1">
+          <stop stop-color="#16d9ff" stop-opacity=".65"/><stop offset=".18" stop-color="#55b5fa" stop-opacity=".65"/><stop offset=".40" stop-color="#e34da8" stop-opacity=".75"/><stop offset=".61" stop-color="#7b2ac3" stop-opacity=".72"/><stop offset=".82" stop-color="#20114d" stop-opacity=".72"/><stop offset="1" stop-color="#080c1a" stop-opacity=".06"/>
+        </linearGradient>
+        <linearGradient id="silkCrest" x1="0" y1="0" x2="1" y2="0">
+          <stop stop-color="#42e8ff" stop-opacity=".05"/><stop offset=".18" stop-color="#5cdbff" stop-opacity=".65"/><stop offset=".34" stop-color="#ff9fda" stop-opacity=".85"/><stop offset=".52" stop-color="#c65bff" stop-opacity=".65"/><stop offset=".76" stop-color="#ff91ca" stop-opacity=".82"/><stop offset=".92" stop-color="#55e8ff" stop-opacity=".70"/><stop offset="1" stop-color="#30caff" stop-opacity=".05"/>
+        </linearGradient>
+        <filter id="silkBloom"><feGaussianBlur stdDeviation="17"/></filter>
+      </defs>
+      <path d="M-130 640 C 80 475 180 300 300 440 S 510 765 660 720 S 880 365 1030 380 S 1240 650 1570 405 L1570 870 C 1260 960 1150 730 990 655 S 730 940 550 880 S 245 555 -130 820Z" fill="url(#silkSurface)" opacity=".65"><animate attributeName="d" values="M-130 640 C 80 475 180 300 300 440 S 510 765 660 720 S 880 365 1030 380 S 1240 650 1570 405 L1570 870 C 1260 960 1150 730 990 655 S 730 940 550 880 S 245 555 -130 820Z;M-130 665 C 80 430 180 350 300 475 S 510 710 660 685 S 880 415 1030 350 S 1240 610 1570 440 L1570 870 C 1260 940 1150 760 990 675 S 730 920 550 865 S 245 575 -130 820Z;M-130 640 C 80 475 180 300 300 440 S 510 765 660 720 S 880 365 1030 380 S 1240 650 1570 405 L1570 870 C 1260 960 1150 730 990 655 S 730 940 550 880 S 245 555 -130 820Z" dur="18s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines=".42 0 .58 1;.42 0 .58 1"/></path>
+      <path d="M-130 640 C 80 475 180 300 300 440 S 510 765 660 720 S 880 365 1030 380 S 1240 650 1570 405" fill="none" stroke="url(#silkCrest)" stroke-width="37" opacity=".66" filter="url(#silkBloom)"><animate attributeName="d" values="M-130 640 C 80 475 180 300 300 440 S 510 765 660 720 S 880 365 1030 380 S 1240 650 1570 405;M-130 665 C 80 430 180 350 300 475 S 510 710 660 685 S 880 415 1030 350 S 1240 610 1570 440;M-130 640 C 80 475 180 300 300 440 S 510 765 660 720 S 880 365 1030 380 S 1240 650 1570 405" dur="18s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines=".42 0 .58 1;.42 0 .58 1"/></path>
+      <path d="M-130 635 C 80 470 180 295 300 435 S 510 760 660 715 S 880 360 1030 375 S 1240 645 1570 400" fill="none" stroke="url(#silkCrest)" stroke-width="8" opacity=".68"><animate attributeName="d" values="M-130 635 C 80 470 180 295 300 435 S 510 760 660 715 S 880 360 1030 375 S 1240 645 1570 400;M-130 660 C 80 425 180 345 300 470 S 510 705 660 680 S 880 410 1030 345 S 1240 605 1570 435;M-130 635 C 80 470 180 295 300 435 S 510 760 660 715 S 880 360 1030 375 S 1240 645 1570 400" dur="18s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines=".42 0 .58 1;.42 0 .58 1"/></path>
+      <path d="M-110 765 C 150 590 225 505 340 615 S 560 900 725 815 S 945 510 1100 565 S 1350 810 1540 605" fill="none" stroke="#070b25" stroke-width="55" opacity=".28" filter="url(#silkBloom)"><animate attributeName="d" values="M-110 765 C 150 590 225 505 340 615 S 560 900 725 815 S 945 510 1100 565 S 1350 810 1540 605;M-110 785 C 150 550 225 540 340 650 S 560 870 725 780 S 945 550 1100 535 S 1350 785 1540 630;M-110 765 C 150 590 225 505 340 615 S 560 900 725 815 S 945 510 1100 565 S 1350 810 1540 605" dur="21s" begin="-3s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines=".42 0 .58 1;.42 0 .58 1"/></path>
+    </svg>
+  </div>
   <header class="site-header">
     <div class="container nav">
       <a href="index.html" class="brand" aria-label="Inputora">
