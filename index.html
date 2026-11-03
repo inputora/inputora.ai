@@ -425,10 +425,88 @@
       section{padding:28px 0}
       .cta-section{padding-bottom:52px}
     }
+
+    /* Isolated homepage tutorial section */
+    .tutorials-section{padding:48px 0 56px}
+    .tutorials-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+    .tutorial-card{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:18px;min-width:0}
+    .tutorial-card h3{margin:17px 2px 6px;font-size:1.2rem}
+    .tutorial-card p{margin:0 2px 4px;opacity:.8;line-height:1.55}
+    .tutorial-video{aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#10111d}
+    .tutorial-video iframe{width:100%;height:100%;border:0;display:block}
+    @media(max-width:720px){.tutorials-grid{grid-template-columns:1fr}.tutorials-section{padding:34px 0}}
+
+    /* Wave V3: fixed luminous ribbon inspired by supplied reference */
+    body{background:#060914!important;isolation:isolate}
+    .inputora-wave-scene{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+    .inputora-wave-scene::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 15% 15%,rgba(101,40,200,.18),transparent 52%),radial-gradient(ellipse at 85% 65%,rgba(0,162,228,.14),transparent 52%)}
+    .inputora-wave-scene svg{position:absolute;left:-8%;width:116%;height:100%;top:0;opacity:.88;filter:drop-shadow(0 0 30px rgba(185,67,224,.28));animation:waveRibbonFloat 17s ease-in-out infinite alternate}
+    .inputora-wave-scene .wave-ribbon-back{opacity:.52;animation-duration:23s;animation-direction:alternate-reverse}
+    body > header,body > main,body > footer{position:relative;z-index:1}
+    .hero-card,.tutorial-card,.benefit-card,.trust-card,.cta-box{backdrop-filter:blur(17px);-webkit-backdrop-filter:blur(17px);box-shadow:0 22px 60px rgba(0,0,0,.32)}
+    @keyframes waveRibbonFloat{from{transform:translate3d(-2%,1.5%,0) scale(1)}to{transform:translate3d(2%,-2%,0) scale(1.045)}}
+
+    /* V4: stronger foreground separation; luminous ribbons behind readable cards */
+    .inputora-wave-scene{opacity:.55}
+    .hero-card,.tutorial-card,.benefit-card,.trust-card,.cta-box{
+      background-color:rgba(14,20,36,.91)!important;
+      backdrop-filter:blur(24px) saturate(.85);-webkit-backdrop-filter:blur(24px) saturate(.85);
+      box-shadow:0 20px 55px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.035);
+    }
+    .workflow .step,.proof-item,.stat,.business-item{
+      background-color:rgba(17,24,42,.92)!important;
+      backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    }
+    .hero-copy{position:relative;isolation:isolate}
+    .hero-copy::before{content:"";position:absolute;inset:-18px -20px;z-index:-1;pointer-events:none;background:rgba(6,9,20,.24);filter:blur(24px)}
+    @media(prefers-reduced-motion:reduce){.inputora-wave-scene svg{animation:none}}
+
+    /* V5 silk depth: fixed ribbons behind opaque foreground cards */
+    .inputora-wave-scene.silk-v5{opacity:.79}
+    .silk-v5 .silk-layer{position:absolute;inset:0;width:100%;height:100%;left:0;top:0;filter:none}
+    .silk-v5 .silk-back{opacity:.67;animation:silkSwell 28s ease-in-out infinite alternate}
+    .silk-v5 .silk-front{opacity:.84;animation:silkSwell 19s ease-in-out infinite alternate-reverse}
+    @keyframes silkSwell{from{transform:translate3d(-1.4%,1%,0) scale(1.02)}to{transform:translate3d(1.5%,-1.1%,0) scale(1.065)}}
+    @media(prefers-reduced-motion:reduce){.silk-v5 .silk-layer{animation:none}}
+
+    /* V7 living silk: ribbon geometry morphs while remaining behind cards */
+    .silk-v5 .silk-front{animation:none;opacity:.84}
+    .silk-v5 .silk-back{animation:silkSwell 34s ease-in-out infinite alternate;opacity:.67}
+    @media(prefers-reduced-motion:reduce){
+      .silk-v5 animate{display:none}
+      .silk-v5 .silk-back{animation:none}
+    }
   </style>
 </head>
 
 <body>
+  <div class="inputora-wave-scene silk-v5" aria-hidden="true">
+    <svg class="silk-layer silk-back" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="silkBackGradient" x1="0" y1="0" x2="1" y2="1">
+          <stop stop-color="#05c5ec" stop-opacity=".05"/><stop offset=".23" stop-color="#15bde6" stop-opacity=".43"/><stop offset=".48" stop-color="#5026a8" stop-opacity=".48"/><stop offset=".75" stop-color="#e844a3" stop-opacity=".43"/><stop offset="1" stop-color="#04a6d8" stop-opacity=".09"/>
+        </linearGradient>
+        <filter id="silkBackBlur"><feGaussianBlur stdDeviation="23"/></filter>
+      </defs>
+      <path d="M-120 625 C 135 285 275 255 405 480 S 630 840 800 610 S 1080 225 1210 375 S 1400 655 1560 485 L1560 900 L-120 900Z" fill="url(#silkBackGradient)" filter="url(#silkBackBlur)"/>
+    </svg>
+    <svg class="silk-layer silk-front" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="silkSurface" x1="0" y1="0" x2=".15" y2="1">
+          <stop stop-color="#16d9ff" stop-opacity=".65"/><stop offset=".18" stop-color="#55b5fa" stop-opacity=".65"/><stop offset=".40" stop-color="#e34da8" stop-opacity=".75"/><stop offset=".61" stop-color="#7b2ac3" stop-opacity=".72"/><stop offset=".82" stop-color="#20114d" stop-opacity=".72"/><stop offset="1" stop-color="#080c1a" stop-opacity=".06"/>
+        </linearGradient>
+        <linearGradient id="silkCrest" x1="0" y1="0" x2="1" y2="0">
+          <stop stop-color="#42e8ff" stop-opacity=".05"/><stop offset=".18" stop-color="#5cdbff" stop-opacity=".65"/><stop offset=".34" stop-color="#ff9fda" stop-opacity=".85"/><stop offset=".52" stop-color="#c65bff" stop-opacity=".65"/><stop offset=".76" stop-color="#ff91ca" stop-opacity=".82"/><stop offset=".92" stop-color="#55e8ff" stop-opacity=".70"/><stop offset="1" stop-color="#30caff" stop-opacity=".05"/>
+        </linearGradient>
+        <filter id="silkBloom"><feGaussianBlur stdDeviation="17"/></filter>
+      </defs>
+      <path d="M-130 640 C 80 475 180 300 300 440 S 510 765 660 720 S 880 365 1030 380 S 1240 650 1570 405 L1570 870 C 1260 960 1150 730 990 655 S 730 940 550 880 S 245 555 -130 820Z" fill="url(#silkSurface)" opacity=".65"><animate attributeName="d" values="M-130 640 C 80 475 180 300 300 440 S 510 765 660 720 S 880 365 1030 380 S 1240 650 1570 405 L1570 870 C 1260 960 1150 730 990 655 S 730 940 550 880 S 245 555 -130 820Z;M-130 665 C 80 430 180 350 300 475 S 510 710 660 685 S 880 415 1030 350 S 1240 610 1570 440 L1570 870 C 1260 940 1150 760 990 675 S 730 920 550 865 S 245 575 -130 820Z;M-130 640 C 80 475 180 300 300 440 S 510 765 660 720 S 880 365 1030 380 S 1240 650 1570 405 L1570 870 C 1260 960 1150 730 990 655 S 730 940 550 880 S 245 555 -130 820Z" dur="18s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines=".42 0 .58 1;.42 0 .58 1"/></path>
+      <path d="M-130 640 C 80 475 180 300 300 440 S 510 765 660 720 S 880 365 1030 380 S 1240 650 1570 405" fill="none" stroke="url(#silkCrest)" stroke-width="37" opacity=".66" filter="url(#silkBloom)"><animate attributeName="d" values="M-130 640 C 80 475 180 300 300 440 S 510 765 660 720 S 880 365 1030 380 S 1240 650 1570 405;M-130 665 C 80 430 180 350 300 475 S 510 710 660 685 S 880 415 1030 350 S 1240 610 1570 440;M-130 640 C 80 475 180 300 300 440 S 510 765 660 720 S 880 365 1030 380 S 1240 650 1570 405" dur="18s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines=".42 0 .58 1;.42 0 .58 1"/></path>
+      <path d="M-130 635 C 80 470 180 295 300 435 S 510 760 660 715 S 880 360 1030 375 S 1240 645 1570 400" fill="none" stroke="url(#silkCrest)" stroke-width="8" opacity=".68"><animate attributeName="d" values="M-130 635 C 80 470 180 295 300 435 S 510 760 660 715 S 880 360 1030 375 S 1240 645 1570 400;M-130 660 C 80 425 180 345 300 470 S 510 705 660 680 S 880 410 1030 345 S 1240 605 1570 435;M-130 635 C 80 470 180 295 300 435 S 510 760 660 715 S 880 360 1030 375 S 1240 645 1570 400" dur="18s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines=".42 0 .58 1;.42 0 .58 1"/></path>
+      <path d="M-110 765 C 150 590 225 505 340 615 S 560 900 725 815 S 945 510 1100 565 S 1350 810 1540 605" fill="none" stroke="#070b25" stroke-width="55" opacity=".28" filter="url(#silkBloom)"><animate attributeName="d" values="M-110 765 C 150 590 225 505 340 615 S 560 900 725 815 S 945 510 1100 565 S 1350 810 1540 605;M-110 785 C 150 550 225 540 340 650 S 560 870 725 780 S 945 550 1100 535 S 1350 785 1540 630;M-110 765 C 150 590 225 505 340 615 S 560 900 725 815 S 945 510 1100 565 S 1350 810 1540 605" dur="21s" begin="-3s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines=".42 0 .58 1;.42 0 .58 1"/></path>
+    </svg>
+  </div>
+
   <header class="site-header">
     <div class="container nav">
       <a href="#" class="brand" aria-label="Inputora">
@@ -525,6 +603,29 @@
               <p data-i18n="step4Text">Tu contenido sale con constancia sin perder tiempo cada día.</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="tutorials" class="tutorials-section" aria-labelledby="tutorials-heading">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="eyebrow" data-i18n="tutorialsEyebrow">Vídeos tutoriales</span>
+          <h2 id="tutorials-heading" data-i18n="tutorialsTitle">Descubre Inputora en acción</h2>
+          <p class="section-sub" data-i18n="tutorialsSub">Dos vídeos breves para conocer la plataforma y crear tu primera publicación.</p>
+        </div>
+        <div class="tutorials-grid">
+          <article class="tutorial-card">
+            <div class="tutorial-video"><iframe id="tutorialTour" title="Recorrido por Inputora" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <h3 data-i18n="tutorialTourTitle">Conoce la plataforma</h3>
+            <p data-i18n="tutorialTourDesc">Un recorrido rápido por las funciones principales de Inputora.</p>
+          </article>
+          <article class="tutorial-card">
+            <div class="tutorial-video"><iframe id="tutorialPost" title="Cómo crear tu primera publicación" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <h3 data-i18n="tutorialPostTitle">Crea tu primera publicación</h3>
+            <p data-i18n="tutorialPostDesc">Aprende a generar, revisar y programar contenido.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -695,6 +796,13 @@
 
     const TEXT = {
       es: {
+        tutorialsEyebrow: 'Vídeos tutoriales',
+        tutorialsTitle: 'Descubre Inputora en acción',
+        tutorialsSub: 'Dos vídeos breves para conocer la plataforma y crear tu primera publicación.',
+        tutorialTourTitle: 'Conoce la plataforma',
+        tutorialTourDesc: 'Un recorrido rápido por las funciones principales de Inputora.',
+        tutorialPostTitle: 'Crea tu primera publicación',
+        tutorialPostDesc: 'Aprende a generar, revisar y programar contenido.',
         pageTitle: 'Inputora | Automatiza tus redes sociales',
         pageDescription: 'Automatiza la creación y publicación de contenido para redes sociales con IA. Ahorra tiempo, publica con constancia y empieza gratis con Inputora.',
         brandSub: 'Automatización de contenido con IA',
@@ -758,6 +866,13 @@
         footer: '© Inputora — Automatización del marketing en redes sociales con IA'
       },
       en: {
+        tutorialsEyebrow: 'Video tutorials',
+        tutorialsTitle: 'See Inputora in action',
+        tutorialsSub: 'Two short videos to explore the platform and create your first post.',
+        tutorialTourTitle: 'Explore the dashboard',
+        tutorialTourDesc: "A quick tour of Inputora's main features.",
+        tutorialPostTitle: 'Create your first post',
+        tutorialPostDesc: 'Learn how to generate, review and schedule content.',
         pageTitle: 'Inputora | Automate your social media',
         pageDescription: 'Automate social media content creation and publishing with AI. Save time, post consistently, and start free with Inputora.',
         brandSub: 'AI content automation',
@@ -821,6 +936,13 @@
         footer: '© Inputora — AI-powered social media marketing automation'
       },
       it: {
+        tutorialsEyebrow: 'Video tutorial',
+        tutorialsTitle: 'Scopri Inputora in azione',
+        tutorialsSub: 'Due brevi video per conoscere la piattaforma e creare il tuo primo post.',
+        tutorialTourTitle: 'Esplora la piattaforma',
+        tutorialTourDesc: 'Una rapida panoramica delle principali funzioni di Inputora.',
+        tutorialPostTitle: 'Crea il tuo primo post',
+        tutorialPostDesc: 'Scopri come generare, rivedere e programmare i contenuti.',
         pageTitle: 'Inputora | Automatizza i tuoi social media',
         pageDescription: 'Automatizza la creazione e la pubblicazione di contenuti per i social media con l’IA. Risparmia tempo, pubblica con costanza e inizia gratis con Inputora.',
         brandSub: 'Automazione dei contenuti con IA',
@@ -885,6 +1007,23 @@
       }
     };
 
+
+    const TUTORIAL_VIDEO_IDS = {
+      es: {tour: 'ync7UXNO078', post: 'JgnNF16WZ94'},
+      en: {tour: 'r7laSTBfm2I', post: 'xJmVriJ68pI'},
+      it: {tour: 'F7sZfThzCvI', post: '1yJLrQqA2GA'}
+    };
+    function updateTutorialVideos(){
+      const videos = TUTORIAL_VIDEO_IDS[LANG] || TUTORIAL_VIDEO_IDS.en;
+      [['tutorialTour',videos.tour],['tutorialPost',videos.post]].forEach(([id,videoId])=>{
+        const frame=document.getElementById(id);
+        if(!frame) return;
+        const url='https://www.youtube-nocookie.com/embed/'+videoId+'?rel=0';
+        if(frame.getAttribute('src')!==url) frame.setAttribute('src',url);
+        frame.title=id==='tutorialTour' ? TEXT[LANG].tutorialTourTitle : TEXT[LANG].tutorialPostTitle;
+      });
+    }
+
     function saveLanguage(lang){
       try{
         localStorage.setItem(STORAGE_KEY, lang);
@@ -925,6 +1064,8 @@
       document.getElementById('langEsBtn').setAttribute('aria-pressed', LANG === 'es');
       document.getElementById('langEnBtn').setAttribute('aria-pressed', LANG === 'en');
       document.getElementById('langItBtn').setAttribute('aria-pressed', LANG === 'it');
+
+      updateTutorialVideos();
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
