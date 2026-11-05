@@ -627,6 +627,21 @@ html[data-theme="light"] .tutorial-card{background:rgba(255,255,255,.80)!importa
 
 
 </style>
+<style id="inputora-italian-heading-layout">
+/* Desktop only: keep the three approved Italian phrases together. Mobile wraps naturally. */
+@media (min-width: 901px){
+  html[lang="it"] .hero h1[data-i18n="title"]{
+    max-width:none;
+    font-size:clamp(2rem, 3.1vw, 3.15rem);
+    letter-spacing:-.035em;
+    line-height:1.13;
+  }
+  html[lang="it"] .hero h1 .it-heading-line{display:block;white-space:nowrap}
+}
+@media (max-width:900px){
+  html[lang="it"] .hero h1 .it-heading-line{display:inline;white-space:normal}
+}
+</style>
 </head>
 
 <body>
@@ -1003,6 +1018,12 @@ html[data-theme="light"] .tutorial-card{background:rgba(255,255,255,.80)!importa
           el.textContent = dictionary[key];
         }
       });
+
+      // Italian desktop heading: intentional three-line layout; other languages remain untouched.
+      const heroTitle = document.querySelector('.hero h1[data-i18n="title"]');
+      if(heroTitle && LANG === 'it'){
+        heroTitle.innerHTML = '<span class="it-heading-line">Richiedi accesso e</span> <span class="it-heading-line">inizia ad automatizzare</span> <span class="it-heading-line">i tuoi social</span>';
+      }
 
       updateIframeLanguage();
     }
